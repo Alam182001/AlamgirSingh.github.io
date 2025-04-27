@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alamgir Singh | Portfolio</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header Section -->
   <header>
     <h1>Alamgir Singh</h1>
-    <p>Elektrotechnik Student | Technology Enthusiast</p>
+    <p><span class="highlight">Elektrotechnik Student</span> | Technology Enthusiast</p>
   </header>
 
   <!-- About Me Section -->
   <section id="about">
-    <h2>Über Mich</h2>
+    <h2><i class="fas fa-user-circle"></i> Über Mich</h2>
     <p>
       Begeistert von Elektrotechnik und Technologie. Derzeit im sechsten Semester meines Elektrotechnikstudiums an der Hochschule für Technik und Wirtschaft in Dresden. Ich habe praktische Erfahrungen in Schaltkreisanalyse, Energiesystemen und Elektronik gesammelt – bereit, mein Wissen in spannenden Projekten einzusetzen!
     </p>
@@ -23,27 +25,27 @@
 
   <!-- Projects Section -->
   <section id="projects">
-    <h2>Projekte</h2>
+    <h2><i class="fas fa-project-diagram"></i> Projekte</h2>
     <article>
-      <h3>TCAD Simulationen & Halbleiterbauelemente</h3>
+      <h3><i class="fas fa-microchip"></i> TCAD Simulationen & Halbleiterbauelemente</h3>
       <p>
         Praktische Erfahrung mit TCAD-Simulationen zur Modellierung von Halbleiterbauelementen. Schwerpunkt auf Dotierungsprofilen, Prozesssimulation und Charakterisierung von Bauelementen. Dieses Projekt findet aktuell im Rahmen meines Praktikums an der HTW Dresden statt.
       </p>
     </article>
     <article>
-      <h3>Messoszillatoren für den GHz-Frequenzbereich</h3>
+      <h3><i class="fas fa-wave-square"></i> Messoszillatoren für den GHz-Frequenzbereich</h3>
       <p>
         Entwicklung und Simulation von Messoszillatoren im GHz-Frequenzbereich unter Einsatz von LTSpice und KiCad. Dieses Projekt hilft mir, hochfrequente Schaltungstechniken zu vertiefen und Layout-Design zu üben.
       </p>
     </article>
     <article>
-      <h3>MATLAB Datenanalyse</h3>
+      <h3><i class="fas fa-chart-line"></i> MATLAB Datenanalyse</h3>
       <p>
         Analyse und Visualisierung von Daten mittels MATLAB. Der Fokus lag dabei auf der Anwendung analytischer und simulationsgestützter Techniken, was meine Fähigkeiten in Datenanalyse und Modellierung stärkte.
       </p>
     </article>
     <article>
-      <h3>C++ und OOPs Projekt</h3>
+      <h3><i class="fas fa-code"></i> C++ und OOPs Projekt</h3>
       <p>
         Dieses Projekt ermöglichte mir praktische Erfahrungen in C++ und objektorientierter Programmierung (OOP), indem ich an realen Anwendungen und Problemlösungen gearbeitet habe.
       </p>
@@ -52,27 +54,50 @@
 
   <!-- Skills Section -->
   <section id="skills">
-    <h2>Kompetenzen</h2>
+    <h2><i class="fas fa-tools"></i> Kompetenzen</h2>
     <ul>
-      <li>TCAD-Simulationen</li>
-      <li>Datenanalyse mit MATLAB</li>
-      <li>Layout-Design (LTSpice und KiCad)</li>
-      <li>CAD und Electrical Circuit Analysis</li>
-      <li>C++, C, OOPs</li>
+      <li><i class="fas fa-microchip"></i> TCAD-Simulationen</li>
+      <li><i class="fas fa-chart-bar"></i> Datenanalyse mit MATLAB</li>
+      <li><i class="fas fa-drafting-compass"></i> Layout-Design (LTSpice und KiCad)</li>
+      <li><i class="fas fa-cogs"></i> CAD und Electrical Circuit Analysis</li>
+      <li><i class="fas fa-code"></i> C++, C, OOPs</li>
     </ul>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
-    <h2>Kontakt</h2>
-    <p>Email: <a href="mailto:alamgirsingh@gmail.com">alamgirsingh@gmail.com</a></p>
-    <p>Telefon: (+49) 1638677972</p>
-    <p>Adresse: Reichenbach Strasse 37, 01069 Dresden</p>
+    <h2><i class="fas fa-envelope"></i> Kontakt</h2>
+    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:alamgirsingh@gmail.com">alamgirsingh@gmail.com</a></p>
+    <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+4916386779XX">(+49) 1638677972</a></p>
+    <p><i class="fas fa-map-marker-alt"></i> Adresse: Reichenbach Strasse 37, 01069 Dresden</p>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Alamgir Singh</p>
+    <p>&copy; 2025 Alamgir Singh | Designed with <i class="fas fa-heart"></i></p>
   </footer>
+
+  <script>
+    // Simple animation for elements appearing on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const articles = document.querySelectorAll('article, #skills li, #contact');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      articles.forEach(article => {
+        article.style.opacity = 0;
+        article.style.transform = 'translateY(20px)';
+        article.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(article);
+      });
+    });
+  </script>
 </body>
 </html>
