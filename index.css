@@ -39,6 +39,39 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
 }
 
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 /* Reset styles */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -125,14 +158,35 @@ header {
   text-align: center;
   padding: calc(var(--spacing-unit) * 12) 0;
   border-bottom: 1px solid var(--color-gray-900);
+  animation: fadeIn 0.8s ease-out;
+}
+
+header h1 {
+  position: relative;
+  display: inline-block;
+}
+
+header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gray-500), var(--color-white), var(--color-gray-500));
+  transform: translateX(-50%);
+  transition: width 0.6s ease;
+}
+
+header:hover h1::after {
+  width: 80%;
 }
 
 header .highlight {
   color: var(--color-white);
-  background: linear-gradient(to right, var(--color-gray-700), var(--color-gray-800));
-  padding: 4px 10px;
-  border-radius: var(--radius-md);
-  font-weight: 500;
+  background: linear-gradient(90deg, var(--color-gray-700), var(--color-gray-800), var(--color-gray-700));
+  background-size: 200% 100%;
+  animation: gradientShift 5s ease-in-out infinite;
 }
 
 article {
@@ -141,6 +195,13 @@ article {
   border-radius: var(--radius-lg);
   background-color: var(--color-gray-950);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+article.animate {
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
 }
 
 article:hover {
@@ -164,6 +225,13 @@ li {
   box-shadow: var(--shadow-sm);
   transition: all 0.2s ease-in-out;
   border: 1px solid var(--color-gray-800);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+li.animate {
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
 }
 
 li:hover {
@@ -194,6 +262,45 @@ footer {
   display: flex;
   align-items: center;
   gap: calc(var(--spacing-unit) * 2);
+}
+
+/* Icon animations */
+i.fas {
+  transition: transform 0.3s ease;
+}
+
+h2:hover i.fas, h3:hover i.fas {
+  transform: translateX(5px);
+}
+
+li:hover i.fas {
+  transform: scale(1.2);
+}
+
+/* Contact hover effects */
+#contact a {
+  position: relative;
+}
+
+#contact a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-white);
+  transition: width 0.3s ease;
+}
+
+#contact a:hover::after {
+  width: 100%;
+}
+
+/* Footer animation */
+footer i.fas {
+  color: #ff3366;
+  animation: pulse 2s infinite;
 }
 
 /* Responsive adjustments */
